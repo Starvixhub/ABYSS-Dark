@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #050507;
+  --purple: #8d55ff;
+  --purple-dark: #32185f;
+  --text: #e9e2f4;
+  --muted: #8e8798;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+}
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(77, 34, 120, .22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(34, 16, 60, .35),
+      transparent 45%
+    ),
+    #050507;
+}
+
+/* ---------- Stars ---------- */
+
+.stars,
+.stars::before,
+.stars::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.stars {
+  opacity: .55;
+  background-image:
+    radial-gradient(circle, #fff 1px, transparent 1px),
+    radial-gradient(circle, #9c7dff 1px, transparent 1px);
+  background-size: 130px 130px, 190px 190px;
+  background-position: 10px 20px, 80px 70px;
+}
+
+/* ---------- Fog ---------- */
+
+.fog {
+  position: absolute;
+  width: 70vw;
+  height: 35vh;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .16;
+  pointer-events: none;
+}
+
+.fog-one {
+  background: #6631a5;
+  bottom: -10%;
+  left: -15%;
+  animation: fogMove 12s ease-in-out infinite alternate;
+}
+
+.fog-two {
+  background: #24105e;
+  top: -10%;
+  right: -15%;
+  animation: fogMove 16s ease-in-out infinite alternate-reverse;
+}
+
+/* ---------- CTA ---------- */
+
+.cta {
+  position: relative;
+  z-index: 5;
+  width: min(720px, 90vw);
+  padding: 75px 50px;
+  text-align: center;
+
+  border: 1px solid rgba(142, 91, 220, .25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 14, 29, .82),
+      rgba(7, 7, 11, .92)
+    );
+
+  box-shadow:
+    0 0 80px rgba(88, 42, 145, .12),
+    inset 0 0 80px rgba(112, 61, 170, .035);
+
+  backdrop-filter: blur(12px);
+}
+
+/* mystical corner cuts */
+
+.cta::before,
+.cta::after {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-color: rgba(145, 89, 220, .65);
+  border-style: solid;
+}
+
+.cta::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.cta::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+/* ---------- Runes ---------- */
+
+.rune {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Cinzel, serif;
+  font-size: 55px;
+  color: rgba(143, 88, 220, .16);
+  text-shadow: 0 0 25px rgba(132, 71, 230, .4);
+}
+
+.rune-left {
+  left: 28px;
+}
+
+.rune-right {
+  right: 28px;
+}
+
+/* ---------- Sigil ---------- */
+
+.sigil {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sigil span {
+  position: absolute;
+  border: 1px solid rgba(148, 87, 224, .6);
+  transform: rotate(45deg);
+}
+
+.sigil span:nth-child(1) {
+  width: 48px;
+  height: 48px;
+}
+
+.sigil span:nth-child(2) {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+}
+
+.sigil span:nth-child(3) {
+  width: 8px;
+  height: 8px;
+  background: var(--purple);
+  border: none;
+  box-shadow:
+    0 0 10px var(--purple),
+    0 0 30px var(--purple);
+  transform: rotate(45deg);
+}
+
+.eyebrow {
+  margin-bottom: 15px;
+  color: #866b9e;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
+h1 {
+  font-family: Cinzel, serif;
+  font-weight: 500;
+  line-height: .95;
+  letter-spacing: 5px;
+}
+
+h1 span {
+  display: block;
+  font-size: clamp(22px, 4vw, 34px);
+  color: #bcb1c9;
+}
+
+h1 strong {
+  display: block;
+  margin-top: 7px;
+  font-size: clamp(60px, 11vw, 105px);
+  font-weight: 700;
+  color: #f2edf8;
+
+  text-shadow:
+    0 0 25px rgba(144, 81, 221, .35),
+    0 0 70px rgba(93, 36, 155, .2);
+}
+
+.description {
+  max-width: 480px;
+  margin: 28px auto 38px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ---------- Button ---------- */
+
+.cta-button {
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+
+  min-width: 280px;
+  padding: 18px 28px;
+
+  border: 1px solid rgba(164, 105, 244, .65);
+  background: rgba(26, 15, 42, .75);
+
+  color: #f4edff;
+  cursor: pointer;
+
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+
+  border-color: #b87cff;
+
+  box-shadow:
+    0 0 25px rgba(135, 65, 224, .3),
+    inset 0 0 25px rgba(135, 65, 224, .1);
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.12),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+  transition: left .7s ease;
+}
+
+.cta-button:hover::before {
+  left: 150%;
+}
+
+.button-glow {
+  position: absolute;
+  inset: 0;
+  opacity: .35;
+
+  background:
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(143, 76, 235, .45),
+      transparent 60%
+    );
+}
+
+.button-text,
+.arrow {
+  position: relative;
+  z-index: 2;
+}
+
+.arrow {
+  font-size: 18px;
+  color: #ae72ff;
+  transition: transform .3s ease;
+}
+
+.cta-button:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* ---------- Status ---------- */
+
+.status {
+  margin-top: 25px;
+  color: #665c6e;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 8px;
+
+  border-radius: 50%;
+  background: #a46aff;
+
+  box-shadow: 0 0 10px #a46aff;
+
+  animation: pulse 1.8s infinite;
+}
+
+/* ---------- Overlay ---------- */
+
+.overlay {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #020203;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 1s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.portal {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(156, 91, 255, .7);
+
+  box-shadow:
+    0 0 30px rgba(135, 65, 224, .5),
+    0 0 100px rgba(92, 30, 170, .35),
+    inset 0 0 50px rgba(116, 46, 210, .4);
+
+  animation: portal 2s ease-in-out infinite;
+}
+
+.overlay p {
+  margin-top: 40px;
+
+  font-family: Cinzel, serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #bba4d4;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: .3;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fogMove {
+  from {
+    transform: translateX(-5%) translateY(0);
+  }
+
+  to {
+    transform: translateX(15%) translateY(-10%);
+  }
+}
+
+@keyframes portal {
+  0%, 100% {
+    transform: scale(.85);
+    opacity: .5;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .cta {
+    padding: 55px 25px;
+  }
+
+  .rune {
+    display: none;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .cta-button {
+    min-width: 0;
+    width: 100%;
+  }
+}
+/* ---------- Developer Credit ---------- */
+
+.developer-credit {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  white-space: nowrap;
+
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: rgba(142, 135, 152, .45);
+}
+
+.developer-credit strong {
+  color: rgba(174, 114, 255, .65);
+  font-weight: 500;
+
+  transition:
+    color .3s ease,
+    text-shadow .3s ease;
+}
+
+.developer-credit:hover strong {
+  color: #b87cff;
+
+  text-shadow:
+    0 0 10px rgba(164, 105, 244, .5);
+}
+
+@media (max-width: 600px) {
+  .developer-credit {
+    bottom: 15px;
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+}
